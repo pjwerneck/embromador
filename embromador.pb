@@ -1,4 +1,6 @@
 
+#define HTML
+
 #ifndef HTML
 #define TROFF_2COLUMN
 #endif
@@ -7,14 +9,6 @@
 
 #include <stdmap.pbi>
 #include <format.pbi>
-
-// regras iniciam aqui
-//teste: teste2* teste2* teste2* teste2* teste2* teste2* teste2* teste2* teste2*;
-
-//teste2: ?sub=novo-termo $artigo " " $sub "\n\n";
-//teste2: sentenca3"\n\n";
-
-
 
 
 saida:
@@ -145,7 +139,8 @@ fazendo-algo-ao-movimento: "reinventando"
 autores-formatados: autores
 ;
 
-autores: autor-artigo+ | autor-artigo
+autores: autor-artigo 
+       //| autor-artigo
 ;
 
 autor-artigo: AUTHOR_INST(nome [departamento ", " instituicao-academica]);
@@ -1700,6 +1695,7 @@ intelectual-classico: "Platão"
                     | "Kant"
                     | "Hegel"
                     | "Hume" 
+		    | "Marx"
 ;
 
 
@@ -1708,7 +1704,6 @@ intelectual: "Lacan"
            | "Baudrillard"
            | "Sartre"
            | "Foucault"
-           | "Marx"
            | "Debord"
            | "Bataille"
            | "Lyotard"
@@ -1894,7 +1889,7 @@ Sontag-conceito: "campo" ?artigo="o" ?plural=""
 
 
 nome: primeiro-nome " " sobrenome-generico
-    | primeiro-nome " " inicial* sobrenome-generico
+    | primeiro-nome " " inicial sobrenome-generico
     | primeiro-nome " " sobrenome-generico
 ;
 
@@ -1949,6 +1944,9 @@ inicial: "A. " | "B. " | "C. " | "D. " | "E. " | "F. " | "G. " | "H. "
 ;
 
 
-iniciais: inicial+;
+iniciais: inicial |
+	  inicial |
+	  inicial |
+          inicial inicial ;
 
 
